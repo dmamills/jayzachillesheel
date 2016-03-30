@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>Jay-Z's Achilles Heel</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
             <div class="hcontainer"><div class="heart anim2">&hearts;</div></div>
             <div class="hcontainer"><div class="heart anim3">&hearts;</div></div>
             <div class="hcontainer"><div class="heart anim4">&hearts;</div></div>
-            <img src="/jayzhead.png" width="30%" height="30%" />
+            <img src="jayzhead.png" width="30%" height="30%" />
         </div>
     </div>
     <footer>
@@ -28,16 +28,16 @@
         var audioEl = document.createElement('audio');
         var buttonEl = document.getElementById('playBtn');
         var headContainer = document.getElementsByClassName('head-container')[0];
-        audioEl.src = '/jayzluv.mp3';
+        
+        function setDisplay(el, val) {
+            return function() {
+                el.style.display = val;
+            }
+        }
 
-        audioEl.onplay = function() {
-            headContainer.style.display = 'block';
-            console.log('play');
-        }
-        audioEl.onended = function() {
-            headContainer.style.display = 'none';
-            console.log('ended');
-        }
+        audioEl.src = 'jayzluv.mp3';
+        audioEl.onplay = setDisplay(headContainer, 'block');
+        audioEl.onended = setDisplay(headContainer, 'none');
 
         buttonEl.onclick = function() {
             audioEl.play();
